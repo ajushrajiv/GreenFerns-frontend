@@ -3,7 +3,7 @@ import './App.css';
 import { NextUIProvider } from "@nextui-org/react";
 import PlantGrid from './pages/plant-grid/PlantGrid';
 import PlantDescription from './pages/plant-description/PlantDescription';
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import NavbarTop from './pages/navbar-green/NavbarTop';
 import ShoppingCart from './pages/shopping-cart/ShoppingCart';
 import Login from './pages/login-signup/login';
@@ -13,7 +13,6 @@ import Home from './pages/home';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
-  const { category } = useParams();
 
   useEffect(() => {
     const handleScroll = () => {

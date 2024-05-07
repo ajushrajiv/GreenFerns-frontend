@@ -13,8 +13,6 @@ export const UserProvider = ({children}) => {
         try {
             const{ user, accessToken } = await AuthMutations.currentLoginUser(email, password);
             setUser(user);
-            console.log("Login successful from user context",user.username);
-            console.log("Login successful from user context ACCESS TOKEN",accessToken);
             validateUser(accessToken);
             return user;
         } catch (error) {
@@ -27,15 +25,13 @@ export const UserProvider = ({children}) => {
       try {
           const{ user, accessToken } = await AuthMutations.signUpUser(username, password, email);
           setUser(user);
-          console.log("SignUp successful from user context",user.username);
-          console.log("SignUp successful from user context ACCESS TOKEN",accessToken);
           validateUser(accessToken);
           return user;
       } catch (error) {
-          console.error("SignUp failed", error);
-          throw error; 
+          console.error("Signup failed from userContext", error);
+          throw error;
       }
-  };
+    };
 
     async function loadCurrentUser() {
       try{

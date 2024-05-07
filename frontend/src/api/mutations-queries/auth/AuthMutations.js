@@ -20,23 +20,26 @@ async function currentLoginUser(email, password){
 }
 
 async function signUpUser(username, password, email){
+    try{
+        const result = await api.post("/auth/signup",{
+            username:username,
+            password: password,
+            email: email
+        },{
+            headers: {
+                'Content-Type': 'application/json' // Set Content-Type to JSON
+            }
+        } 
+        );
+        console.log("RESULT SIGNUPUSER",result.data);
 
-    const result = await api.post("/auth/signup",{
-        username:username,
-        password: password,
-        email: email
-    },{
-        headers: {
-            'Content-Type': 'application/json' // Set Content-Type to JSON
-        }
+        const { user, tokens } = result.data;
+        const accessToken = tokens.accessToken;
+        saveAccessTokens(accessToken);
+        return { user, accessToken };
+    }catch(e){
+       throw e.response.status
     } 
-    );
-    console.log("RESULT SIGNUPUSER",result.data);
-
-    const { user, tokens } = result.data;
-    const accessToken = tokens.accessToken;
-    saveAccessTokens(accessToken);
-    return { user, accessToken };
 }
 
 

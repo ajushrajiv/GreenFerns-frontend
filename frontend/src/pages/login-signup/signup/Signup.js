@@ -1,16 +1,22 @@
 import React, { useState, useContext } from 'react';
 import {Button} from "@nextui-org/react";
 import UserContext from '../../../contexts/user-context/UserContext';
+import ErrorPopOver from '../error-popover/ErrorPopover';
 
 function Signup() {
   
   const { dataSignUpUser } = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     email: ''
   });
+
+  const handleCloseError = () => {
+    setErrorMessage(null);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,15 +30,21 @@ function Signup() {
 
       console.log('Form submitted:', response);
       // Reset form fields after submission
-      setFormData({
-        username: '',
-        password: '',
-        email: ''
-      });
+      
     }catch(e){
-      console.log("Signup failed",e)
+      if (e ) {
+        // Display error message to the user
+        setErrorMessage(e)
+        console.log("EEEEEEEEEEEEEEEERRRRRRRRRRRRRRR",e);
+    } else {
+        console.error("Signup failed", e);
     }
-    
+    } 
+    setFormData({
+      username: '',
+      password: '',
+      email: ''
+    });
   };
 
   return (
@@ -78,6 +90,8 @@ function Signup() {
           />
         </div>
       </div>
+      {errorMessage && <ErrorPopOver message={errorMessage} onClose={handleCloseError}/>} 
+      {console.log("Error from signup before ErrorPOPOVVVVVVER", errorMessage)}
       <div className="flex justify-center mt-4">
         <Button type="submit" className="bg-lime-700 text-white rounded text-center px-6 py-1">
             <span>SignUp </span>
