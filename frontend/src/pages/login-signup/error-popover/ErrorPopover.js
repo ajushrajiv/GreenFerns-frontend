@@ -12,7 +12,7 @@ function ErrorPopOver({ message , onClose}){
     useEffect(() => {
         const timer = setTimeout(() => {
           onClose(); 
-        }, 3000);
+        }, 10000);
         return () => clearTimeout(timer);
       }, [onClose]);
 
