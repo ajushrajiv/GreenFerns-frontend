@@ -1,5 +1,6 @@
 import PlantItem from "../../plant-item";
-import background from "../background.jpg"
+import background from "../background.jpg";
+import React from 'react';
 
 function BalconyPlants(){
     return(

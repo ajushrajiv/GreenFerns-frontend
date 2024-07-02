@@ -3,6 +3,7 @@ import IndoorPlants from "./indoor-plants";
 import BeeFriendly from "./bee-friendly";
 import FruitsVeg from "./fruits-veg";
 import BalconyPlants from "./balcony-plants";
+import React from 'react';
 
 function PlantGrid(){
     const { category } = useParams();

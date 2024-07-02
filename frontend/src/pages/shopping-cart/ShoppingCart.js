@@ -2,6 +2,7 @@ import background from "../plant-grid/background.jpg"
 import {Button, Divider} from "@nextui-org/react";
 import IncDec from "./inc-dec";
 import PaymentCart from "./payment-cart";
+import React from 'react';
 
 function ShoppingCart(){
     return(

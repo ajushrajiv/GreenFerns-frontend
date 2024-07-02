@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { NextUIProvider } from "@nextui-org/react";
 import PlantGrid from './pages/plant-grid/PlantGrid';
